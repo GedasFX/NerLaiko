@@ -19,5 +19,6 @@ namespace NerLaiko.Models
         public virtual IEnumerable<Invoice> Invoices { get; set; }
         public virtual IEnumerable<Issue> Issues { get; set; }
         public virtual IEnumerable<Order> Orders { get; set; }
+        public virtual IEnumerable<Produce> Products { get; set; } // Fridge contents
     }
 }
