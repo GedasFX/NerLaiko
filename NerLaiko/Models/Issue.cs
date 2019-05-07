@@ -15,5 +15,9 @@ namespace NerLaiko.Models
         [ForeignKey(nameof(Fridge))]
         public Guid FridgeId { get; set; }
         public virtual Refrigerator Fridge { get; set; }
+
+        [ForeignKey(nameof(Operator))]
+        public string OperatorId { get; set; }
+        public virtual ApplicationUser Operator { get; set; }
     }
 }

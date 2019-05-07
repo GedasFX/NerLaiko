@@ -1,0 +1,36 @@
+﻿@model System.Collections.Generic.IEnumerable<NerLaiko.Models.Refrigerator>
+
+@{
+    ViewBag.Title = "Invoices";
+    Layout = "_Layout";
+}
+
+<h2>Invoices</h2>
+
+@if (!Model.Any())
+{
+    <p>You do not have any fridges.</p>
+}
+else
+{
+    foreach (var fridge in Model)
+    {
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>@fridge.Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var invoice in fridge.Invoices)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("View", "Invoice", invoice.Id)">@invoice.CreationDate</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

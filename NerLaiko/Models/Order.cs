@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,5 +18,7 @@ namespace NerLaiko.Models
         [ForeignKey(nameof(Fridge))]
         public Guid FridgeId { get; set; }
         public Refrigerator Fridge { get; set; }
+
+        public virtual IEnumerable<OrderItem> OrderItems { get; set; }
     }
 }

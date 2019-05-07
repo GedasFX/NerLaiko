@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace NerLaiko.Models
 {
@@ -12,5 +13,7 @@ namespace NerLaiko.Models
         public Unit Unit { get; set; }
         public int DeliveryAmount { get; set; }
         public bool IsForSale { get; set; }
+
+        public virtual IEnumerable<OrderItem> OrderItems { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NerLaiko.Data;
 
 namespace NerLaiko.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190507142955_RefrigiratoruserIdstring")]
+    partial class RefrigiratoruserIdstring
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,13 +246,9 @@ namespace NerLaiko.Data.Migrations
 
                     b.Property<string>("OperatorComment");
 
-                    b.Property<string>("OperatorId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("FridgeId");
-
-                    b.HasIndex("OperatorId");
 
                     b.ToTable("Issues");
                 });
@@ -419,13 +417,9 @@ namespace NerLaiko.Data.Migrations
             modelBuilder.Entity("NerLaiko.Models.Issue", b =>
                 {
                     b.HasOne("NerLaiko.Models.Refrigerator", "Fridge")
-                        .WithMany("Issues")
+                        .WithMany()
                         .HasForeignKey("FridgeId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("NerLaiko.Models.ApplicationUser", "Operator")
-                        .WithMany("AssignedIssues")
-                        .HasForeignKey("OperatorId");
                 });
 
             modelBuilder.Entity("NerLaiko.Models.ItemDiscount", b =>
@@ -444,7 +438,7 @@ namespace NerLaiko.Data.Migrations
             modelBuilder.Entity("NerLaiko.Models.Order", b =>
                 {
                     b.HasOne("NerLaiko.Models.Refrigerator", "Fridge")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("FridgeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -452,12 +446,12 @@ namespace NerLaiko.Data.Migrations
             modelBuilder.Entity("NerLaiko.Models.OrderItem", b =>
                 {
                     b.HasOne("NerLaiko.Models.Item", "Item")
-                        .WithMany("OrderItems")
+                        .WithMany()
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("NerLaiko.Models.Order", "Order")
-                        .WithMany("OrderItems")
+                        .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

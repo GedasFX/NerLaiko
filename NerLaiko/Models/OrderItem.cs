@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NerLaiko.Models
@@ -7,11 +8,11 @@ namespace NerLaiko.Models
     {
         public int Quantity { get; set; }
 
-        [ForeignKey(nameof(Order))]
+        [Key, ForeignKey(nameof(Order))]
         public Guid OrderId { get; set; }
         public virtual Order Order { get; set; }
 
-        [ForeignKey(nameof(Item))]
+        [Key, ForeignKey(nameof(Item))]
         public int ItemId { get; set; }
         public virtual Item Item { get; set; }
     }
