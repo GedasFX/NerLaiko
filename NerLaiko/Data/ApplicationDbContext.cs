@@ -29,6 +29,7 @@ namespace NerLaiko.Data
                 .HasKey(c => new { c.ItemId, c.OrderId });
             builder.Entity<Produce>()
                 .HasKey(c => new { c.ItemId, c.FridgeId });
+
             base.OnModelCreating(builder);
         }
     }

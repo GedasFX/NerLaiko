@@ -9,12 +9,13 @@ namespace NerLaiko.Models
     {
         [Key]
         public Guid Id { get; set; }
+        
         public string Location { get; set; }
         public FridgeState State { get; set; }
 
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public virtual IEnumerable<Invoice> Invoices { get; set; }
         public virtual IEnumerable<Issue> Issues { get; set; }

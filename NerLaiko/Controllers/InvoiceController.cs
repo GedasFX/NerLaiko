@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NerLaiko.Data;
 using NerLaiko.Helper;
-using NerLaiko.Models;
 
 namespace NerLaiko.Controllers
 {
@@ -21,6 +18,7 @@ namespace NerLaiko.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var userFridges = _context.Users // User table
