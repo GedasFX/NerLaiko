@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace FridgeAPI
 {
     public interface IFridge
     {
-        string GetFridgeContents(Guid fridgeId, string token);
+        IEnumerable<KeyValuePair<string,int>> GetActivityLog(Guid fridgeId);
     }
 }
