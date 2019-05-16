@@ -23,7 +23,7 @@ namespace NerLaiko.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var items = _context.Items.ToListAsync();
+            var items = _context.Items.Where(i => i.IsForSale).ToListAsync();
             return View(await items);
         }
 

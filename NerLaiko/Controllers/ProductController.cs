@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FridgeAPI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NerLaiko.Data;
@@ -11,10 +12,12 @@ namespace NerLaiko.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IFridge _fridge;
 
-        public ProductController(ApplicationDbContext context)
+        public ProductController(ApplicationDbContext context, IFridge fridge)
         {
             _context = context;
+            _fridge = fridge;
         }
 
         public IActionResult Index()
