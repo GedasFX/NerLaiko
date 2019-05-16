@@ -26,7 +26,7 @@ else
                 {
                     <tr>
                         <td>
-                            <a href="@Url.Action("View", "Invoice", invoice.Id)">@invoice.CreationDate</a>
+                            <a href="@Url.Action("View", "Invoice", new {invoice.Id})">@invoice.CreationDate</a>
                         </td>
                     </tr>
                 }

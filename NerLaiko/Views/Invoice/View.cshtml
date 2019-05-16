@@ -15,7 +15,7 @@ else
 {
     <h3>@Model.CreationDate</h3>
     <div class="container">
-        @Model.HtmlContents
+        @Html.Raw(Model.HtmlContents)
     </div>
 }
 

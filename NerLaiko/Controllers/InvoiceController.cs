@@ -32,7 +32,10 @@ namespace NerLaiko.Controllers
         public IActionResult View(Guid? id)
         {
             // User wandered over
-            return id == null ? View(null) : View(_context.Invoices.SingleOrDefault(i => i.Id == id));
+            if (id == null)
+                return base.View(null);
+
+            return View(_context.Invoices.SingleOrDefault(i => i.Id == id));
         }
     }
 }
