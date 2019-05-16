@@ -43,6 +43,8 @@ namespace NerLaiko.Controllers
                 var itemId = item.Id;
 
                 // Calculate the ratio between devilery unit and remainder
+                if (product.Quantity == 0)
+                    product.Quantity = 1;
                 if (item.DeliveryAmount / product.Quantity < 4) // Difference between the two is 4 times or more
                     continue;
 

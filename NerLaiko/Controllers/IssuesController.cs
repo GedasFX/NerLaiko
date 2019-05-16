@@ -29,6 +29,8 @@ namespace NerLaiko.Controllers
                 FridgeId = fridgeId,
                 Description = issue
             });
+            var fridge = _context.Refrigerators.Find(fridgeId);
+            fridge.State = FridgeState.RequiresService;
             _context.SaveChanges();
 
             return RedirectToAction("Details", "Fridge", new { id = fridgeId });
