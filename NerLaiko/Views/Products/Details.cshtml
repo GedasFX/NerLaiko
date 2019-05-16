@@ -1,0 +1,54 @@
+﻿@model NerLaiko.ViewModels.ProductsViewModel
+
+@{
+    ViewBag.Title = "Fridge Contents";
+    Layout = "_Layout";
+}
+
+<h2>Fridge Contents</h2>
+<h3>@Model.Fridge.Location</h3>
+
+@if (Model.Recommendations.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Recommendations)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Change" asp-route-fridgeId="@Model.Fridge.Id">Add new product</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Fridge.Products)
+        {
+            <tr>
+                <td>@item.Item.Name</td>
+                <td>@item.Quantity</td>
+                <td>
+                    <a asp-action="Change" asp-route-fridgeId="@item.FridgeId" asp-route-name="@item.Item.Name">Edit</a>
+                    <form asp-action="Delete" asp-route-fridgeId="@item.FridgeId" asp-route-itemId="@item.ItemId">
+                        <a href="#" onclick="if (confirm('Are you sure?')) { $(this).closest('form').submit() }">Delete</a>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
