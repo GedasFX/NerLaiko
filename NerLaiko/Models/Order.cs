@@ -11,8 +11,8 @@ namespace NerLaiko.Models
         public Guid Id { get; set; }
 
         public bool IsReccuring { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime NextDeliveryDate { get; set; }
+        [DataType(DataType.Date)] public DateTime StartDate { get; set; }
+        [DataType(DataType.Date)] public DateTime NextDeliveryDate { get; set; }
         public int DeliveryInterval { get; set; } // In days
 
         [ForeignKey(nameof(Fridge))]

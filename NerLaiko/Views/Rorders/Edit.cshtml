@@ -1,0 +1,35 @@
+﻿@model NerLaiko.ViewModels.RorderViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="FridgeId" value="@ViewBag.FridgeId" />
+            <div class="form-group">
+                <label asp-for="DeliveryInterval" class="control-label">Delivery interval (in days)</label>
+                <input asp-for="DeliveryInterval" class="form-control" />
+                <span asp-validation-for="DeliveryInterval" type="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label">Quantity (in delivery units)</label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" type="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Confirm" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

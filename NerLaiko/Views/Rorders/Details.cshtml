@@ -1,0 +1,60 @@
+﻿@model NerLaiko.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Active
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsReccuring)
+        </dd>
+        <dt>
+            Starting date
+        </dt>
+        <dd>
+            @Model.StartDate.ToShortDateString()
+        </dd>
+        <dt>
+            Next delivery date
+        </dt>
+        <dd>
+            @Model.NextDeliveryDate.ToShortDateString()
+        </dd>
+        <dt>
+            Delivery interval
+        </dt>
+        <dd>
+            @Model.DeliveryInterval day(s)
+        </dd>
+    </dl>
+    <hr/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var orderitem in Model.OrderItems)
+            {
+                <tr>
+                    <td>@orderitem.Item.Name</td>
+                    <td>@orderitem.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="List" asp-route-fridgeId="@Model.FridgeId">Back to List</a>
+</div>

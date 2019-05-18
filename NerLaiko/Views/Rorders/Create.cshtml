@@ -1,0 +1,44 @@
+﻿@model NerLaiko.ViewModels.RorderViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="FridgeId" value="@ViewBag.FridgeId" />
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label">Starting date</label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryInterval" class="control-label">Delivery interval (in days)</label>
+                <input asp-for="DeliveryInterval" class="form-control" />
+                <span asp-validation-for="DeliveryInterval" type="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemId" class="control-label">Item selection</label>
+                <select asp-for="ItemId" class="form-control" asp-items="ViewBag.Items"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label">Quantity (in delivery units)</label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" type="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

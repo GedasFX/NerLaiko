@@ -1,0 +1,64 @@
+﻿@model Refrigerator
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>@Model.Location</h2>
+
+<p>
+    <a asp-action="Create" asp-route-fridgeId="@Model.Id">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Item name
+            </th>
+            <th>Quantity</th>
+            <th>
+                Start date
+            </th>
+            <th>
+                Next delivery date
+            </th>
+            <th>
+                Delivery interval
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.Orders.Where(o => o.IsReccuring))
+        {
+            foreach (var item in order.OrderItems)
+            {
+                <tr>
+                    <td>
+                        @item.Item.Name
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @order.StartDate
+                    </td>
+                    <td>
+                        @order.NextDeliveryDate
+                    </td>
+                    <td>
+                        @order.DeliveryInterval day(s)
+                    </td>
+                    <td>
+                        <form asp-action="Delete">
+                            <a asp-action="Edit" asp-route-id="@order.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@order.Id">Details</a> |
+                            <input type="hidden" name="Id" value="@order.Id" />
+                            <a href="#" onclick="if (confirm('Are you sure?')) { $(this).closest('form').submit() }">Delete</a>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

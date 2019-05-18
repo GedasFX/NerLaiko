@@ -32,10 +32,12 @@
                     @Html.DisplayFor(modelItem => item.State)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Details" asp-controller="Products" asp-route-fridgeId="@item.Id">Contents</a> |
-                    <form asp-action="Delete">
+                    <form asp-action="Delete" class="form-inline">
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Details" asp-controller="Products" asp-route-fridgeId="@item.Id">Contents</a> |
+                        <a asp-action="List" asp-controller="Rorders" asp-route-fridgeId="@item.Id">Subscriptions</a> |
+
                         <input type="hidden" name="Id" value="@item.Id" />
                         <a href="#" onclick="if (confirm('Are you sure?')) { $(this).closest('form').submit() }">Delete</a>
                     </form>

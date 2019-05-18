@@ -1,0 +1,54 @@
+﻿@model NerLaiko.Models.Item
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Unit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsForSale)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsForSale)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
