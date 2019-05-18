@@ -6,7 +6,7 @@
     var item = ViewBag.ItemName;
 }
 
-<form asp-action="Change" asp-route-fridgeId="@fridgeId">
+<form asp-action="ProductForm" asp-route-fridgeId="@fridgeId">
     @if (item == null)
     {
         <div class="input-group">
