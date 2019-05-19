@@ -33,7 +33,7 @@ namespace NerLaiko.Controllers
             fridge.State = FridgeState.RequiresService;
             _context.SaveChanges();
 
-            return RedirectToAction("ProductList", "Fridge", new { id = fridgeId });
+            return RedirectToAction("Details", "Fridge", new { id = fridgeId });
         }
     }
 }

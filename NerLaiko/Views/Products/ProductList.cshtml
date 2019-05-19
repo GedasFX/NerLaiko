@@ -10,21 +10,23 @@
 
 @if (Model.Recommendations.Any())
 {
+    <h4>Recommendations</h4>
     <table class="table">
         <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
+        <tr>
+            <th>Name</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Recommendations)
-            {
-                <tr>
-                    <td>@item.Name</td>
-                </tr>
-            }
+        @foreach (var item in Model.Recommendations)
+        {
+            <tr>
+                <td>@item.Name</td>
+            </tr>
+        }
         </tbody>
     </table>
+    <hr />
 }
 
 <a asp-action="ProductForm" asp-route-fridgeId="@Model.Fridge.Id">Add new product</a>

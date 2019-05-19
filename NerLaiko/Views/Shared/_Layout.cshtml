@@ -30,12 +30,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Order" asp-action="Index">Products</a></li>
                     <li><a asp-area="" asp-controller="Invoice" asp-action="Index">Invoices</a></li>
                     <li><a asp-area="" asp-controller="Fridge" asp-action="FridgeList">Fridges</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a asp-area="" asp-controller="Items" asp-action="Index">Items</a></li>
+                    }
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
