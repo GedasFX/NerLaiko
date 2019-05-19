@@ -23,7 +23,7 @@ namespace NerLaiko.Controllers
         }
 
         // GET: Fridge
-        public IActionResult Index()
+        public IActionResult FridgeList()
         {
             var userFridges = _context.Users // User table
                 .Include(t => t.Refrigerators) // Populates Refrigerators IEnumerable
@@ -78,7 +78,7 @@ namespace NerLaiko.Controllers
 
                 _context.Add(fridge);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(FridgeList));
             }
 
             return View(model);
@@ -120,7 +120,7 @@ namespace NerLaiko.Controllers
                 _context.Update(fridge);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(FridgeList));
             }
 
             return View(model);
@@ -153,7 +153,7 @@ namespace NerLaiko.Controllers
             var refrigerator = await _context.Refrigerators.FindAsync(id);
             _context.Refrigerators.Remove(refrigerator);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(FridgeList));
         }
 
         private bool RefrigeratorExists(Guid id)

@@ -21,7 +21,7 @@ namespace NerLaiko.Controllers
             _fridge = fridge;
         }
 
-        public IActionResult Details(Guid fridgeId)
+        public IActionResult ProductList(Guid fridgeId)
         {
             var fridge = GetFridge(fridgeId);
             var changes = _fridge.GetActivityLog(fridgeId);
@@ -31,7 +31,7 @@ namespace NerLaiko.Controllers
             return View(new ProductsViewModel { Fridge = fridge, Recommendations = GenerateRecommendations(fridge).ToArray() });
         }
 
-        public IActionResult Change(Guid fridgeId, string name)
+        public IActionResult ProductForm(Guid fridgeId, string name)
         {
             ViewBag.FridgeId = fridgeId.ToString();
             ViewBag.ItemName = name;
@@ -39,7 +39,7 @@ namespace NerLaiko.Controllers
         }
 
         [HttpPost]
-        public IActionResult Change(Guid fridgeId, [Bind("Name")] string name, [Bind("Quantity")] int quantity)
+        public IActionResult ProductForm(Guid fridgeId, [Bind("Name")] string name, [Bind("Quantity")] int quantity)
         {
             // Check if item exists
             var item = _context.Items.SingleOrDefault(i => i.Name == name);
@@ -68,7 +68,7 @@ namespace NerLaiko.Controllers
             product.Quantity = quantity;
             _context.SaveChanges();
 
-            return RedirectToAction("Details", new { fridgeId });
+            return RedirectToAction("ProductList", new { fridgeId });
         }
 
         [HttpPost]
@@ -78,7 +78,7 @@ namespace NerLaiko.Controllers
             _context.Produces.Remove(product);
             _context.SaveChanges();
 
-            return RedirectToAction(nameof(Details), new { fridgeId });
+            return RedirectToAction(nameof(ProductList), new { fridgeId });
         }
 
         private void ApplyFridgeChanges(Guid fridgeId, IEnumerable<KeyValuePair<string, int>> changes)
