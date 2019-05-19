@@ -11,7 +11,7 @@ namespace NerLaiko.Models
         public string Description { get; set; }
         public decimal Price { get; set; }
         public Unit Unit { get; set; }
-        public int DeliveryAmount { get; set; }
+        [Range(1, int.MaxValue)] public int DeliveryAmount { get; set; }
         public bool IsForSale { get; set; }
 
         public virtual IEnumerable<OrderItem> OrderItems { get; set; }
