@@ -8,6 +8,7 @@ using NerLaiko.Models;
 
 namespace NerLaiko.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
