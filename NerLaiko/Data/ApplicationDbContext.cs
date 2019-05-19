@@ -15,6 +15,7 @@ namespace NerLaiko.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Produce> Produces { get; set; }
         public DbSet<Refrigerator> Refrigerators { get; set; }
+        public DbSet<LoyaltyLevel> LoyaltyLevels { get; set; }
 
         public ApplicationDbContext(DbContextOptions options)
             : base(options)
@@ -29,6 +30,11 @@ namespace NerLaiko.Data
                 .HasKey(c => new { c.ItemId, c.OrderId });
             builder.Entity<Produce>()
                 .HasKey(c => new { c.ItemId, c.FridgeId });
+
+            builder.Entity<LoyaltyLevel>()
+                .HasMany(o => o.Users)
+                .WithOne(o => o.LoyaltyLevel)
+                .OnDelete(DeleteBehavior.SetNull);
 
             base.OnModelCreating(builder);
         }
